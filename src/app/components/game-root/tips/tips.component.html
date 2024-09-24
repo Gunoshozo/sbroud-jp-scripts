@@ -1,0 +1,25 @@
+<div class="items-list_body">
+  @if (isDraw) {
+    <div class="items-list_scroll">
+      <div class="items-list_container vw80" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+        <tui-island class="items-list_container-island additional-page_contents additional-page_island">
+          <tui-primitive-textfield class="items-list_filter-field" [tuiTextfieldIcon]="'tuiIconSearchLarge'"
+            [tuiTextfieldCleaner]="true" [(value)]="filterString">
+            Filter
+            <input tuiTextfield />
+          </tui-primitive-textfield>
+          <tui-accordion [closeOthers]="false" class="tips_accordion">
+            @for (tip of filteredTips; track tip) {
+              <tui-accordion-item class="accordion-item">
+                {{tip.name}}
+                <ng-template tuiAccordionItemContent>
+                  <pre class="tips_accordion-content" [innerHTML]="tip.content"></pre>
+                </ng-template>
+              </tui-accordion-item>
+            }
+          </tui-accordion>
+        </tui-island>
+      </div>
+    </div>
+  }
+</div>

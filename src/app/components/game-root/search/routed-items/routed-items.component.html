@@ -1,0 +1,25 @@
+<div class="search-routes">
+  <button class="search_navigation-button left" icon="tuiIconChevronLeftLarge" title="Previous" tuiIconButton
+    [disabled]="_index == 0" appearance="custom" type="button" (click)="carousel.prev()"></button>
+  <tui-carousel #carousel [draggable]="true" [itemsCount]="carouselCount" [(index)]="_index">
+    @for (route of filteredItems; track route; let i = $index) {
+    <div class="search-route-item item" *tuiItem alt="" draggable="false" [class.item_active]="i === _index + 1">
+      <h2 [ngClass]="{'spoiler': route.spoiler}">{{route.name}}</h2>
+      @for (chapter of route.items; track chapter) {
+      <div class="search-route-chapters">
+        <a [routerLink]="chapter.routerLink">
+          <button appearance="custom" class="items-list_item-button" tuiButton type="button">
+            {{chapter.name}}
+          </button>
+        </a>
+      </div>
+      }
+    </div>
+    }
+  </tui-carousel>
+  <button class="search_navigation-button right" icon="tuiIconChevronRightLarge" title="Next" tuiIconButton
+    [disabled]="this.filteredItems.length - this.carouselCount == _index" appearance="custom" type="button"
+    (click)="carousel.next()"></button>
+  <button class="search_navigation-button right bottom" icon="tuiIconChevronUpLarge" title="To Top" tuiIconButton
+    appearance="custom" type="button" (click)="scrollToTop()"></button>
+</div>

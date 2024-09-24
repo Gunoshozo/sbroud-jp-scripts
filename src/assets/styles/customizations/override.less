@@ -1,0 +1,49 @@
+.tui-loader-centered {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.ticks-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+game-root,
+home,
+settings {
+    overflow: unset !important;
+}
+
+
+.chapter-reading_choice,
+.tips_accordion {
+    & tui-accordion-item>.t-wrapper {
+        background-color: var(--panel-solid-background-color) !important;
+
+        &:hover>.t-header_hoverable,
+        &>.t-header:hover {
+            background-color: var(--hover-background) !important;
+        }
+    }
+
+    .tips_accordion-content {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+}
+
+.items-list_filter-field .tui-autofill{
+    background-color: var(--panel-solid-background-color) !important;
+}
+
+.global-loader .t-loader {
+    position: fixed !important;
+    top: 50%;
+    left: unset !important;
+}
+
+
+.accordion-item .t-title{
+    text-wrap: pretty!important;
+}

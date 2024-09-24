@@ -1,0 +1,9 @@
+<div class="search-items-grid">
+    @for (item of filteredItems; track item) {
+    <div>
+        <a [routerLink]="item.routerLink"><button appearance="custom" class="items-list_item-button" tuiButton
+                type="button">
+                {{item.name}}</button></a>
+    </div>
+    }
+</div>

@@ -1,0 +1,33 @@
+.additional-page_contents {
+    font-size: var(--reading-font-size, 1rem);
+    line-height: calc(var(--reading-font-size, 1rem) + 0.5rem);
+    h2:first-child {
+        margin: 0;
+    }
+
+    h2:not(:first-child) {
+        margin: 16px 0 0;
+    }
+
+    .spoiler {
+        color: var(--spoiler-color);
+        background-color: var(--spoiler-background);
+    
+        &:hover {
+            color: unset;
+            background-color: unset;
+        }
+    }
+    .t-title, .t-content{
+        font-size: var(--reading-font-size, 1rem);
+        line-height: calc(var(--reading-font-size, 1rem) + 0.5rem);
+    }
+
+}
+
+.additional-page_island {
+    z-index: 1;
+    box-shadow: -1px 0px 16px 1px rgba(0, 0, 0, 0.25);
+    background: var(--panel-solid-background-color);
+    height: max-content;
+}

@@ -1,0 +1,15 @@
+<div (mouseover)="onHover(true)" (mouseout)="onHover(false)">
+  @if (hoveredLine || isBookmark) {
+    <button
+      class="chapter-reading_bookmark-button"
+      [ngClass]="{'active': isBookmark}"
+      icon="tuiIconBookmarkLarge"
+      tuiIconButton
+      appearance="bookmark"
+      [tuiHint]="isBookmark? 'Remove bookmark': 'Add bookmark'"
+      tuiHintAppearance="onDark"
+      (click)="addBookmark.emit(line.index)">
+    </button>
+  }
+  <pre [innerHtml]="line.text"></pre>
+</div>

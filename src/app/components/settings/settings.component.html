@@ -1,0 +1,77 @@
+<header-controls></header-controls>
+<div class="items-list_body">
+  <div class="items-list_scroll">
+    <div class="items-list_container one-column center">
+      <tui-island class="additional-page_island fit-content">
+        <form [formGroup]="settingsForm">
+          <div class="setting-grid ">
+            <div class="setting-row">
+              <tui-input class="setting-oneliner" formControlName="repo">
+                Source repo
+                <input
+                    tuiTextfield
+                    type="url"
+                />
+            </tui-input>
+            </div>
+
+
+            <div class="setting-row">
+              <label class="setting-label" tuiLabel="Sakura animation:"> </label>
+              <tui-toggle class="tui-space_left-1" [showIcons]="true" [size]="'l'"
+                formControlName="sakura"></tui-toggle>
+            </div>
+
+            <div class="setting-row">
+              <label class="setting-label" tuiLabel="Hide spoilers:"> </label>
+              <tui-toggle class="tui-space_left-1" [showIcons]="true" [size]="'l'"
+                formControlName="spoiler"></tui-toggle>
+            </div>
+
+            <div class="setting-row">
+              <label class="setting-label" tuiLabel="Use easter eggs images:"> </label>
+              <tui-toggle class="tui-space_left-1" [showIcons]="true" [size]="'l'"
+                formControlName="easterEggs"></tui-toggle>
+            </div>
+
+            <div class="setting-row">
+              <label class="setting-label" tuiLabel="Reading font size mulitiplier"> </label>
+              <div>
+                <input tuiSlider type="range" formControlName="fontMul" [min]="100" [max]="300" [keySteps]="keySteps"
+                  [segments]="segments" />
+                <div class="ticks-labels">
+                  @for (label of labels; track label) {
+                  <span>{{ label }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </tui-island>
+
+      <tui-island class="additional-page_island vw80">
+        <div class="navigation_container">
+          <div class="navigation_prev">
+            <a icon="tuiIconChevronsLeft" iconAlign="left" tuiLink>Prev example chapter</a>
+          </div>
+          <div class="navigation_next">
+            <a class="spoiler" icon="tuiIconChevronsRight" tuiLink>Next example Spoiler Chapter</a>
+          </div>
+        </div>
+        <hr />
+        <div class="chapter-reading_content-text">
+          <p class="chapter-reading_line">Thats an example text</p>
+          <p class="chapter-reading_line">これは文例です</p>
+          <p class="chapter-reading_line spoiler">Thats a spoiler</p>
+        </div>
+      </tui-island>
+
+      <item-card #card [name]="exampleItem.name" [link]="exampleItem.routerLink" [imageResource]="exampleItem.imgSrc"
+        [spoiler]="exampleItem.spoiler"></item-card>
+    </div>
+  </div>
+</div>
+
+<footer-controls></footer-controls>

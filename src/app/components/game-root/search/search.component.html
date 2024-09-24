@@ -1,0 +1,18 @@
+<div class="search_root">
+    @if (loaded) {
+    <div class="search_body">
+        <div class="search-items">
+            <tui-primitive-textfield class="items-list_filter-field" [tuiTextfieldIcon]="'tuiIconSearchLarge'"
+                [tuiTextfieldCleaner]="true" [(value)]="filterString">
+                Search for text in scenarios
+                <input tuiTextfield />
+            </tui-primitive-textfield>
+            @if (_routed) {
+            <routed-items [gameName]="gameName" [filterStr]="filterString"></routed-items>
+            } @else {
+            <chapters-items [gameName]="gameName" [filterStr]="filterString"></chapters-items>
+            }
+        </div>
+    </div>
+    }
+</div>

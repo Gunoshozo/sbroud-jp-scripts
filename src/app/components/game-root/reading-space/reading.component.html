@@ -1,0 +1,39 @@
+<div class="chapter-reading">
+  <div class="chapter-reading_body">
+    <div class="chapter-reading_content">
+      <tui-island class="chapter-reading_content-island">
+        <tui-elastic-container>
+          <navigation [navigationData]="navigationData">
+            <hr class="chapter-reading_spacer">
+            <div class="chapter-reading_content-text">
+              @for (line of lines; track line) {
+              <ng-container [ngTemplateOutlet]="readableLines" [ngTemplateOutletContext]="{'line':line, 'depth': 0}">
+              </ng-container>
+              }
+            </div>
+            <hr class="chapter-reading_spacer bottom">
+          </navigation>
+        </tui-elastic-container>
+      </tui-island>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #readableLines let-line="line" let-depth="depth">
+  @if (line.isChoice) {
+  <details class="chapter-reading_choice">
+    <summary [innerHtml]="line.text"></summary>
+    <div class="chapter-reading_choice-content" [ngStyle]="{'--choiceDepth': depth+1}">
+      @for (innerLine of line.innerLines; track innerLine) {
+      <ng-container [ngTemplateOutlet]="readableLines"
+        [ngTemplateOutletContext]="{'line': innerLine, 'depth': depth+1}">
+      </ng-container>
+      }
+    </div>
+  </details>
+  } @else {
+  <reading-line class="chapter-reading_line-node" [line]="line" [isBookmark]="line.index == currentBookmark"
+    (addBookmark)="addBookmark($event)"></reading-line>
+  }
+</ng-template>

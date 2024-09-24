@@ -1,0 +1,60 @@
+.item-card {
+
+    &-root {
+        position: relative;
+        z-index: 3;
+    }
+
+    &-container {
+        overflow: hidden;
+        position: relative;
+        border-radius: 5px;
+        background-color: var(--panel-background-color);
+        color: var(--panel-text-color);
+        box-shadow: 4px 5px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &-image {
+        height: 100%;
+        width: 100%;
+        display: block;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    &-title {
+        color: rgba(31, 41, 55, 1);
+        background-color: var(--panel-background-color);
+        color: var(--panel-text-color);
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        font-size: 1rem;
+        max-height: 50%;
+
+        &-container {
+            padding: 1rem;
+
+            .item-card-title_name {
+                line-height: 1.5rem;
+
+                margin: 0;
+            }
+        }
+    }
+}
+
+chapter-navigation,
+.games {
+    .item-card-image {
+        //optimization for CLS, hardcoded proportions since images are 2:1
+        min-width: calc((var(--container-width) - 2rem) * 0.5);
+        min-height: calc((var(--container-width) - 2rem) * 0.25);
+
+        @media screen and (max-width: 720px) {
+            min-width: calc(var(--container-width));
+            min-height: calc(var(--container-width) * 0.5);
+        }
+    }
+}

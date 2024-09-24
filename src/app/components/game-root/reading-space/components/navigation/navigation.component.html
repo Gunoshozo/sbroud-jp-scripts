@@ -1,0 +1,25 @@
+<div class="navigation_container">
+  <ng-container *ngTemplateOutlet="navigationElemsTemplate"></ng-container>
+</div>
+
+<ng-content></ng-content>
+
+@if (comment) {
+<pre class="navigation_comment" [innerHtml]="comment"></pre>
+}
+<div class="navigation_container bottom">
+  <ng-container *ngTemplateOutlet="navigationElemsTemplate"></ng-container>
+</div>
+
+<ng-template #navigationElemsTemplate>
+    <div class="navigation_prev">
+      @for (p of prev; track p) {
+      <a [routerLink]="p.link" icon="tuiIconChevronsLeft" iconAlign="left" tuiLink>{{p.text}}</a>
+      }
+    </div>
+    <div class="navigation_next">
+      @for (n of next; track n) {
+      <a [routerLink]="n.link" [ngClass]="{'spoiler':n.spoiler}" icon="tuiIconChevronsRight" tuiLink>{{n.text}}</a>
+      }
+    </div>
+</ng-template>

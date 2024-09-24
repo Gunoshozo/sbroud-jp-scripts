@@ -1,0 +1,37 @@
+.game-root {
+    &_panel {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--panel-solid-background-color);
+        position: sticky;
+        top: 0;
+    }
+
+    &_header {
+        position: sticky;
+        top: 0;
+        background-color: var(--panel-solid-background-color);
+        color: var(--panel-text-color);
+        z-index: 5;
+        box-shadow: -1px 0px 16px 1px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        min-width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: top .4s ease;
+
+        &-text {
+            text-transform: capitalize;
+        }
+    }
+
+    &_side-panel-button {
+        width: 100%;
+        &>button{
+            width: 100%;
+        }
+    }
+}
+

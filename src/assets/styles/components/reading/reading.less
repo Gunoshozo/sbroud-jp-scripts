@@ -1,0 +1,164 @@
+.chapter-reading {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+
+    &_body {
+        justify-content: center;
+        align-items: flex-start;
+        display: flex;
+        flex-grow: 1;
+        background-color: var(--background);
+    }
+
+    &_choice {
+        .chapter-reading_choice {
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            margin: 5px;
+        }
+
+        margin-bottom: calc(var(--reading-font-size, 1rem));
+        border: 1px solid;
+        border-radius: 15px;
+
+        summary {
+            padding: .75rem 1rem;
+            background-color: var(--panel-solid-background-color);
+            border-radius: 15px;
+        }
+
+        &-content {
+            background-color: var(--background);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+
+            .chapter-reading_line:nth-of-type(1) {
+                margin-top: 0;
+                padding-top: 1em;
+                border-top: 1px solid;
+            }
+
+            .chapter-reading_line:last-of-type {
+                margin-bottom: 0;
+                padding-bottom: 1em;
+            }
+
+            .chapter-reading_line {
+                padding-left: 1rem;
+                padding-right: 1rem;
+
+                pre {
+                    margin: 0;
+                    white-space: pre-wrap;
+                }
+            }
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    details[open].chapter-reading_choice>summary {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &_spacer {
+        margin-bottom: 1em;
+
+        &.bottom {
+            margin-bottom: 0;
+            margin-top: 1em;
+        }
+    }
+
+    .name {
+        font-weight: 600;
+    }
+
+    &_content {
+        width: 80vw;
+        margin: 48px 0;
+        color: var(--panel-text-color);
+
+        &-island {
+            box-shadow: -1px 0px 16px 1px rgba(0, 0, 0, 0.25);
+            background: var(--panel-solid-background-color);
+        }
+
+        &-text {
+            min-height: 2rem;
+            font-size: var(--reading-font-size, 1rem);
+            line-height: calc(var(--reading-font-size, 1rem) + 0.5rem);
+            --choiceDepth: 0;
+        }
+        &-header {
+            text-align: center;
+        }
+    }
+
+    &_line {
+        white-space: break-spaces;
+        word-break: break-word;
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0;
+
+        p {
+            margin: 0;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        &:hover {
+            .chapter-reading_bookmark-button {
+                display: block;
+            }
+        }
+    }
+
+    &_bookmark-button {
+        width: 0 !important;
+        transform: translateX(calc(-1*(var(--reading-font-size)* 3 + 2rem))) translateY(calc(var(--reading-font-size) * -1.5));
+        width: calc(var(--reading-font-size) * 3 + 2px + 2rem) !important;
+        height: calc(var(--reading-font-size) * 4) !important;
+        position: absolute;
+
+        use {
+            font-size: var(--reading-font-size);
+        }
+
+        &.active svg {
+            fill: var(--bookmark-color);
+        }
+    }
+
+    &_choice-content .chapter-reading_bookmark-button {
+        transform: translateX(calc(-1*(var(--reading-font-size)* 3 + 2rem + 1rem + 6px * var(--choiceDepth)*2))) translateY(calc(var(--reading-font-size) * -1.5));
+        width: calc(var(--reading-font-size) * 3 + 2px + 2rem + 1rem + 6px * var(--choiceDepth)* 2) !important;
+    }
+
+
+    .dict {
+        color: var(--link-text-color);
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &_special-1 {
+        color: var(--special-1-text-color);
+        font-weight: 600;
+    }
+
+    &_content-island {
+        z-index: 1;
+    }
+}

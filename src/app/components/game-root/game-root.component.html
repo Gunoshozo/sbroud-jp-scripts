@@ -1,0 +1,133 @@
+<div #header class="game-root_header">
+    @if (isMobile) {
+    <button icon="tuiIconMenuLarge" tuiIconButton appearance="icon" (click)="toggle(true)" aria-label="Open Side Menu"
+        (tuiActiveZoneChange)="toggle($event)">
+        <div *tuiSidebar="sideBarOpen; direction: 'left'" class="root" [ngClass]="{'dark': night.value}">
+            <div class="game-root_panel">
+                <a [routerLink]="'/games'" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Home
+                    </button>
+                </a>
+                <a [routerLink]="'search'" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Search
+                    </button>
+                </a>
+
+                @if (toChaptersLink) {
+                <a [routerLink]="[toChaptersLink]" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Back to Route Chapters
+                    </button>
+                </a>
+                }
+
+                @if (bookmarkLink) {
+                <a [routerLink]="[bookmarkLink]" [queryParams]="{toBookmark: true}" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Go to Bookmark
+                    </button>
+                </a>
+                }
+
+                <button class="game-root_side-panel-button" appearance="custom" tuiButton type="button"
+                    (click)="showGameHelp(dialogTemplate)">
+                    Show Game Info
+                </button>
+                @for (item of menuItems; track item) {
+                <a [routerLink]="[item.link]" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        {{item.name}}
+                    </button>
+                </a>
+                }
+
+                <a [routerLink]="'/settings'" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Settings
+                    </button>
+                </a>
+            </div>
+        </div>
+    </button>
+    <div class="spacer"></div>
+    <h2 class="game-root_header-text" [innerHTML]="displayName">
+    </h2>
+    <div class="spacer"></div>
+    <button [icon]="night.value? 'tuiIconSunLarge': 'tuiIconMoonLarge' " tuiIconButton appearance="icon"
+        [tuiHint]="this.night.value?'Switch to light mode':'Switch to night mode'" tuiHintAppearance="onDark"
+        (click)="night.toggle()">
+    </button>
+    }
+    @else { <!--If desktop -->
+    <button icon="tuiIconMenuLarge" tuiIconButton appearance="icon" (click)="toggle(true)" aria-label="Open Side Menu"
+        (tuiActiveZoneChange)="toggle($event)">
+        <div *tuiSidebar="sideBarOpen; direction: 'left'" class="root" [ngClass]="{'dark': night.value}">
+            <div class="game-root_panel">
+                @if (toChaptersLink) {
+                <a [routerLink]="[toChaptersLink]" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Back to Route Chapters
+                    </button>
+                </a>
+                }
+                @for (item of menuItems; track item) {
+                <a [routerLink]="[item.link]" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        {{item.name}}
+                    </button>
+                </a>
+                }
+                @if (bookmarkLink) {
+                <a [routerLink]="[bookmarkLink]" [queryParams]="{toBookmark: true}" class="game-root_side-panel-button">
+                    <button appearance="custom" tuiButton type="button" (click)="onNavigate($event)">
+                        Go to Bookmark
+                    </button>
+                </a>
+                }
+            </div>
+        </div>
+    </button>
+    <a [routerLink]="'/games'" aria-label="To Game List">
+        <button icon="tuiIconHomeLarge" tuiIconButton appearance="icon" tuiHint="To Game List" aria-label="To Game List"
+            tuiHintAppearance="onDark">
+        </button>
+    </a>
+    <a [routerLink]="'search'" aria-label="Search">
+        <button icon="tuiIconSearchLarge" tuiIconButton appearance="icon" tuiHint="Search" aria-label="Search"
+         tuiHintAppearance="onDark">
+        </button>
+    </a>
+    <div class="spacer"></div>
+    <h2 class="game-root_header-text" [innerHTML]="displayName"></h2>
+    <div class="spacer"></div>
+    <button icon="tuiIconHelpCircleLarge" tuiIconButton appearance="icon" tuiHint="Game Info" aria-label="Game Info"
+        tuiHintAppearance="onDark"
+        (click)="showGameHelp(dialogTemplate)">
+    </button>
+    <a [routerLink]="'/settings'"  aria-label="Global Settings">
+        <button icon="tuiIconSettingsLarge" tuiIconButton appearance="icon" tuiHint="Global Settings" aria-label="Global Settings"
+            tuiHintAppearance="onDark">
+        </button>
+    </a>
+    <button [icon]="night.value? 'tuiIconSunLarge': 'tuiIconMoonLarge' " tuiIconButton appearance="icon"
+        [tuiHint]="this.night.value?'Switch to light mode':'Switch to night mode'" aria-label="Switch mode"
+        tuiHintAppearance="onDark"
+        (click)="night.toggle()">
+    </button>
+    }
+</div>
+
+
+
+
+<ng-template #dialogTemplate let-observer>
+    <ng-component [innerHTML]="dialogueTxt"></ng-component>
+    <button size="m" tuiButton appearance="custom" type="button" (click)="observer.complete()">
+        Close
+    </button>
+</ng-template>
+
+
+<router-outlet (activate)="routerActivate()"></router-outlet>

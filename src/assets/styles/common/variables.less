@@ -1,0 +1,35 @@
+app-root {
+	--panel-background-color: rgba(255, 255, 255, 0.8);
+	--panel-solid-background-color: white;
+	--panel-text-color: black;
+	--link-text-color: #312e81;
+	--special-1-text-color: gold;
+	--background: azure;
+
+	--idle-background: #fdfbff;
+	--hover-background: #b1d8d8;
+	--active-background: #7dbfbf;
+	--inactive-background: lightgray;
+
+	--reading-font-size: 1rem;
+
+	--bookmark-color: gold;
+	
+	&.dark {
+		--panel-background-color: rgba(26, 22, 37,0.8);
+		--panel-solid-background-color: #1a1625;
+		--panel-text-color: white;
+		--link-text-color: #a5b4fc;
+		--special-1-text-color: yellow;
+		--background: #02000c;
+
+		--idle-background: #1A1625;
+		--hover-background: #3a3055;
+		--active-background: #625e82;
+		--inactive-background: #575661;
+	}
+}
+
+html {
+	font-size: var(--global-font-size, 16px);
+}

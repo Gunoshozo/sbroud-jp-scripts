@@ -1,0 +1,63 @@
+.items-list {
+
+    &_body {
+        background-color: var(--background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    &_scroll {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &_container-island {
+        box-shadow: -1px 0px 16px 1px rgba(0, 0, 0, 0.25);
+        background: var(--panel-background-color);
+    }
+
+    &_container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 2rem !important;
+        gap: 2rem !important;
+        padding: 32px;
+        z-index: 1;
+        max-width: var(--container-width);
+
+        @media screen and (max-width: 720px) {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        &-island {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &_filter-field {
+        margin-bottom: 24px;
+        width: 50%;
+        align-self: center;
+        z-index: 1;
+        transition: width .5s ease;
+
+        @media screen and (max-width: 720px) {
+            width: 100%;
+            max-width: 80vw;
+        }
+    }
+
+    &_item-button {
+        width: 100%;
+        box-shadow: -1px 0px 16px 1px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.games .items-list_container{
+    max-width: var(--container-width);
+    min-width:  var(--container-width);
+}

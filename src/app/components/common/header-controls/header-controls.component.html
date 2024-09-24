@@ -1,0 +1,22 @@
+<div class="header-controls">
+    <a [routerLink]="'/info'" class="header-controls_button" aria-label="General Info">
+        <button icon="tuiIconHelpCircleLarge" tuiIconButton appearance="icon" tuiHint="General Info" tuiHintAppearance="onDark" aria-label="General Info">
+        </button>
+    </a>
+    <a [routerLink]="'/games'" class="header-controls_button" aria-label="To game list">
+        <button icon="tuiIconHomeLarge" tuiIconButton appearance="icon" tuiHint="To game list" tuiHintAppearance="onDark"  aria-label="To game list">
+        </button>
+    </a>
+    <a [routerLink]="'/settings'" class="header-controls_button" aria-label="Global Settings">
+        <button icon="tuiIconSettingsLarge" tuiIconButton appearance="icon" tuiHint="Global Settings" tuiHintAppearance="onDark" aria-label="Global Settings">
+        </button>
+    </a>
+    <button class="header-controls_button"
+            [icon]="night.value? 'tuiIconSunLarge': 'tuiIconMoonLarge' " 
+            tuiIconButton
+            appearance="icon" 
+            (click)="night.toggle()"
+            [tuiHint]="this.night.value?'Switch to light mode':'Switch to night mode'" tuiHintAppearance="onDark"
+            aria-label="Switch mode">
+    </button>
+</div>

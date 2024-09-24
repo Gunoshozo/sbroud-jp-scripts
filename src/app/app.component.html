@@ -1,0 +1,9 @@
+<tui-root>
+  @if (theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)) {
+    <tui-theme-night></tui-theme-night>
+  }
+  <tui-loader class="global-loader" [overlay]="true" [showLoader]="_loader" [size]="'xxl'">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <router-outlet></router-outlet>
+  </tui-loader>
+</tui-root>

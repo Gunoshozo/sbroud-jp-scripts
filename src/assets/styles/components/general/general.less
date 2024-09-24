@@ -1,0 +1,48 @@
+reading-component,
+chapter-navigation,
+supplementary,
+app-tips,
+settings {
+    display: flex;
+    flex-grow: 1;
+}
+
+.vw80 {
+    min-width: 80vw!important;
+    max-width: 80vw!important;
+}
+
+.inline-icon {
+    max-height: var(--reading-font-size, 1rem);
+}
+
+.fit-content {
+    max-width: fit-content;
+}
+
+.center {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.one-column {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+img.error_image {
+    width: unset;
+    height: unset;
+}

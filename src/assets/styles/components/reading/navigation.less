@@ -1,0 +1,49 @@
+.navigation {
+
+    .navigation_container.bottom {
+        padding-bottom: 0;
+        padding-top: 12px;
+    }
+
+    &_comment {
+        text-align: end;
+    }
+
+    &_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        word-break: break-word;
+        padding: 12px 0;
+
+        a {
+            text-decoration: none;
+            color: var(--link-text-color);
+            background: unset;
+
+            &.spoiler {
+                color: var(--spoiler-color, var(--link-text-color));
+                background-color: var(--spoiler-background);
+
+                &:hover {
+                    color: unset;
+                    background-color: unset;
+                }
+            }
+        }
+    }
+
+    &_prev,
+    &_next {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_prev a {
+        text-align: left;
+    }
+
+    &_next a {
+        text-align: right;
+    }
+}

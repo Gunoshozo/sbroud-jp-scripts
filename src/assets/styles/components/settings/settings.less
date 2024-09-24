@@ -1,0 +1,32 @@
+.setting {
+
+    &-label {
+        font-size: 1rem;
+        min-height: unset;
+        padding-right: 2rem;
+
+        .t-label {
+            font-size: inherit;
+        }
+    }
+
+    &-oneliner{
+        width: 100%;
+    }
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 0.8rem;
+        justify-content: space-between;
+
+        >tui-toggle{
+            min-width: 48px;
+        }
+    }
+
+    &-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}

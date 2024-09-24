@@ -1,0 +1,22 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+// This goes into global, non-encapsulated styles
+[tuiWrapper][data-appearance='custom'] {
+    background: var(--idle-background);
+    color: var(--panel-text-color);
+
+    .wrapper-hover({
+        background: var(--hover-background);
+    });
+
+    .wrapper-active({
+        background: var(--active-background);
+    });
+
+    .wrapper-disabled({
+        background: var(--inactive-background);
+    });
+}
+
+[tuiWrapper][data-appearance='bookmark'] {
+    color: var(--bookmark-color)
+}
