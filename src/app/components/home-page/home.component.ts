@@ -6,6 +6,7 @@ import { ItemCardComponent } from '../common/item-card/item-card.component';
 import { HeaderControlsComponent } from '../common/header-controls/header-controls.component';
 import { FooterControlsComponent } from '../common/footer-controls/footer-controls.component';
 import { NgStyle } from '@angular/common';
+import { ImgLinkPipe } from '../../pipes/img-link.pipe';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { NgStyle } from '@angular/common';
     NgStyle,
     ItemCardComponent,
     HeaderControlsComponent,
-    FooterControlsComponent
+    FooterControlsComponent,
+    ImgLinkPipe
 ],
   providers: [
     RestApiService

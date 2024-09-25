@@ -4,7 +4,7 @@
   <div class="items-list_container" style="--container-width: 80vw" [ngStyle]="gameItems.length == 1? {'grid-template-columns': 'none'}: {}">
     @for (game of gameItems; track game) {
       <item-card [name]="game.name" [hideName]="true" [link]="game.routerLink"
-      [imageResource]="game.imgSrc"></item-card>
+      [imageResource]="game.imgSrc | imgLink"></item-card>
     }
   </div>
 </div>
