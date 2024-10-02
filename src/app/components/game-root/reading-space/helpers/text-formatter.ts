@@ -1,3 +1,4 @@
+import { defaultRepo, LocalStorageVariables } from "../../../../consts/general.const";
 import { ReadableLine } from "../models/lines.model"
 
 export class TextFormatter {
@@ -11,7 +12,13 @@ export class TextFormatter {
             } else if (it.includes("--choice")) {
                 choiceCurve++;
             }
+            if (choiceCurve < 0){
+                console.error("Choice folding is wrong")
+            }
         })
+        if (choiceCurve != 0){
+            console.error("Choice folding is wrong")
+        }
 
         result = this.collectLines(lines, 0)[0]
         return result
@@ -42,6 +49,7 @@ export class TextFormatter {
     }
 
     private static processLine(line: string): string{
-        return line.replaceAll("\\n", "\n")
+        const repoVal = localStorage.getItem(LocalStorageVariables.sourceRepo) || defaultRepo;
+        return line.replaceAll("\\n", "\n").replaceAll("{assets}",`${repoVal}`)
     }
 }

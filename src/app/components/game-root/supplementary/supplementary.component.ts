@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { combineLatestWith, forkJoin, switchMap, tap } from 'rxjs';
-import { GameNameMapping } from '../../../consts/general.const';
+import { defaultRepo, GameNameMapping, LocalStorageVariables } from '../../../consts/general.const';
 import { GameRootService } from '../game-root.serviece';
 import { RestApiService } from '../../../services/rest.service';
 import { GameConfig } from '../../../models/reading.models';
@@ -41,7 +41,7 @@ export class SupplementaryPageComponent {
                     this.apiService.get("supplementary", {
                         pathParams: { "gameName": gameName, "page": mediaPage }, requestOptions: { responseType: "text" }
                     }).pipe(tap((htmlPage) => {
-                        this.text = htmlPage;
+                        this.text = this.processText(htmlPage);
                     })),
                     this.apiService.get("gameConfig", { pathParams: { "gameName": gameName } }).pipe(
                         tap((config: GameConfig[]) => {
@@ -58,5 +58,10 @@ export class SupplementaryPageComponent {
                 this.router.navigate(["/error"])
             }
         })
+    }
+
+    private processText(str: string): string{
+        const repoVal = localStorage.getItem(LocalStorageVariables.sourceRepo) || defaultRepo;
+        return str.replaceAll("{assets}",`${repoVal}`)
     }
 }
